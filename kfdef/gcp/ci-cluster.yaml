@@ -1,0 +1,148 @@
+apiVersion: kfdef.apps.kubeflow.org/v1alpha1
+kind: KfDef
+metadata:
+  name: kubeflow_app
+  namespace: kubeflow-ci
+spec:
+  repos:
+  - name: manifests
+    root: 
+    uri: https://github.com/kubeflow/manifests/archive/pull/328/head.tar.gz
+  - name: kubeflow
+    root: kubeflow-master
+    uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
+  applications:
+  - kustomizeConfig:
+      parameters:
+      - name: namespace
+        value: istio-system
+      repoRef:
+        name: manifests
+        path: istio/istio-crds
+    name: istio-crds
+  - kustomizeConfig:
+      overlays:
+      - application
+      parameters:
+      - name: generateName
+        value: kubeflow-
+      repoRef:
+        name: manifests
+        path: application/application
+    name: application
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: metacontroller
+    name: metacontroller
+  - kustomizeConfig:
+      overlays:
+      - application
+      parameters:
+      - name: generateName
+        value: tektoncd-install-
+      - name: registry
+        value: gcr.io/tekton-releases
+      repoRef:
+        name: manifests
+        path: tektoncd/tektoncd-install
+    name: tektoncd-install
+  - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: admission-webhook/webhook
+    name: webhook
+  - kustomizeConfig:
+      parameters:
+      - name: webhookNamePrefix
+        value: admission-webhook-
+      repoRef:
+        name: manifests
+        path: admission-webhook/bootstrap
+    name: bootstrap
+  - kustomizeConfig:
+      overlays:
+      - istio
+      - application
+      parameters:
+      - name: injectGcpCredentials
+        value: "true"
+      - name: generateName
+        value: notebook-controller-
+      repoRef:
+        name: manifests
+        path: jupyter/notebook-controller
+    name: notebook-controller
+  - kustomizeConfig:
+      overlays:
+      - minioPd
+      parameters:
+      - name: minioPd
+        value: test1-storage-artifact-store
+      - name: minioPvName
+        value: minio-pv
+      - name: minioPvcName
+        value: minio-pv-claim
+      repoRef:
+        name: manifests
+        path: pipeline/minio
+    name: minio
+  - kustomizeConfig:
+      overlays:
+      - mysqlPd
+      parameters:
+      - name: mysqlPd
+        value: test1-storage-metadata-store
+      - name: mysqlPvName
+        value: mysql-pv
+      - name: mysqlPvcName
+        value: mysql-pv-claim
+      repoRef:
+        name: manifests
+        path: pipeline/mysql
+    name: mysql
+  - kustomizeConfig:
+      overlays:
+      - gcp-credentials
+      parameters:
+      - name: secretName
+        value: admin-gcp-sa
+      repoRef:
+        name: manifests
+        path: gcp/cloud-endpoints
+    name: cloud-endpoints
+  - kustomizeConfig:
+      parameters:
+      - name: admin
+        value: kfctl-e2e@constant-cubist-173123.iam.gserviceaccount.com
+      repoRef:
+        name: manifests
+        path: profiles
+    name: profiles
+  - kustomizeConfig:
+      overlays:
+      - gcp-credentials
+      - managed-cert
+      parameters:
+      - name: namespace
+        value: istio-system
+      - initRequired: true
+        name: ipName
+        value: test1-ip
+      - initRequired: true
+        name: hostname
+        # The value of hostname should be the DNS address for ingress.
+        # This will be set automatically during kfctl generate.
+        # value: test1.endpoints.SET_PROJECT.cloud.goog
+      repoRef:
+        name: manifests
+        path: gcp/iap-ingress
+    name: iap-ingress
+  email: kfctl-e2e@constant-cubist-173123.iam.gserviceaccount.com
+  enableApplications: true
+  packageManager: kustomize
+  platform: gcp
+  skipInitProject: true
+  useBasicAuth: false
+  useIstio: false
+  version: master
