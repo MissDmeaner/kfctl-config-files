@@ -45,7 +45,7 @@ spec:
       - image-resource
       parameters:
       - name: namespace
-        value: kubeflow-test-infra
+        value: kubeflow-ci
       - name: generateName
         value: ci-centraldashboard-pipeline-run-
       - name: pipeline
