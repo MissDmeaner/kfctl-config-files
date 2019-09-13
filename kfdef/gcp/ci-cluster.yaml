@@ -114,7 +114,7 @@ spec:
   - kustomizeConfig:
       parameters:
       - name: admin
-        value: kfctl-e2e@constant-cubist-173123.iam.gserviceaccount.com
+        value: kfctl-ci@constant-cubist-173123.iam.gserviceaccount.com
       repoRef:
         name: manifests
         path: profiles
@@ -138,7 +138,7 @@ spec:
         name: manifests
         path: gcp/iap-ingress
     name: iap-ingress
-  email: kfctl-e2e@constant-cubist-173123.iam.gserviceaccount.com
+  email: kfctl-ci@constant-cubist-173123.iam.gserviceaccount.com
   enableApplications: true
   packageManager: kustomize
   platform: gcp
