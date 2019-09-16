@@ -20,6 +20,8 @@ spec:
         value: kubeflow-ci
       - name: cluster
         value: kubeflow-ci
+      - name: cluster-version
+        value: 1.14
       - name: configPath
         value: "https://raw.githubusercontent.com/kkasravi/kfctl-config-files/master/kfdef/gcp/ci-cluster.yaml"
       - name: cpu-pool-initialNodeCount
@@ -44,6 +46,8 @@ spec:
         value: 1
       - name: gpu-pool-min-nodes
         value: 1
+      - name: gpu-pool-min-cpu-platform
+        value: Intel Skylake
       - name: gpu-pool-image-type
         value: ubuntu
       - name: kfctl_image
