@@ -57,7 +57,7 @@ spec:
       - name: kubeflow_repo_revision
         value: pull/4091/head
       - name: kubeflow_repo_url
-        value: https://github.com/kubeflow/kubeflow
+        value: git@github.com:kubeflow/kubeflow.git
       - name: pvc_mount_path
         value: /kubeflow
       - name: project
