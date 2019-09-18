@@ -29,8 +29,8 @@ spec:
         value: components/centraldashboard/Dockerfile
       - name: path_to_manifests_kustomization_file
         value: common/centraldashboard
-      - name: path_to_manifests_tests_dir
-        value: tests
+      - name: path_to_manifests_dir
+        value: common/centraldashboard/base
       - name: container_image
         value: "gcr.io/constant-cubist-173123/test-worker@sha256:6258613836e9e5cb4468a3c8841026af9fb3272b39b16fa3f8b2af3cf1d0f350"
       - name: pull_request_repo
