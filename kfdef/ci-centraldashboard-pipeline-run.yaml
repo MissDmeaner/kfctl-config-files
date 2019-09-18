@@ -33,6 +33,10 @@ spec:
         value: tests
       - name: container_image
         value: "gcr.io/constant-cubist-173123/test-worker@sha256:6258613836e9e5cb4468a3c8841026af9fb3272b39b16fa3f8b2af3cf1d0f350"
+      - name: pull_request_repo
+        value: kubeflow
+      - name: pull_request_id
+        value: 4091
       repoRef:
         name: manifests
         path: ci/ci-pipeline
@@ -59,8 +63,12 @@ spec:
         value: refs/pull/4091/head
       - name: kubeflow_repo_url
         value: git@github.com:kubeflow/kubeflow.git
+      - name: manifests_repo_revision
+        value: master
+      - name: manifests_repo_url
+        value: git@github.com:kkasravi/manifests.git
       - name: pull_request_repo
-        value: manifests
+        value: kubeflow
       - name: pull_request_id
         value: 4091
       - name: pvc_mount_path
