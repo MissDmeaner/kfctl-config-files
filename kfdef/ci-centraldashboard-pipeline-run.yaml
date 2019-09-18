@@ -43,6 +43,7 @@ spec:
       - kubeflow-repo-resource
       - manifests-repo-resource
       - image-resource
+      - pull-request-resource
       parameters:
       - name: namespace
         value: kubeflow-ci
@@ -58,6 +59,10 @@ spec:
         value: refs/pull/4091/head
       - name: kubeflow_repo_url
         value: git@github.com:kubeflow/kubeflow.git
+      - name: pull_request_repo
+        value: manifests
+      - name: pull_request_id
+        value: 4091
       - name: pvc_mount_path
         value: /kubeflow
       - name: project
