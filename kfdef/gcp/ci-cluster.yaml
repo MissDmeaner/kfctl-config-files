@@ -6,11 +6,8 @@ metadata:
 spec:
   repos:
   - name: manifests
-    root: 
     uri: https://github.com/kubeflow/manifests/archive/pull/328/head.tar.gz
-  - name: kubeflow
-    root: kubeflow-master
-    uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
+  appdir: /tmp/myapp2
   applications:
   - kustomizeConfig:
       parameters:
@@ -147,6 +144,14 @@ spec:
   enableApplications: true
   packageManager: kustomize
   platform: gcp
+  plugins:
+  - name: gcp
+    spec:
+      createPipelinePersistentStorage: true
+      deploymentManagerConfig:
+        repoRef:
+          name: manifests
+          path: gcp/deployment_manager_configs
   skipInitProject: true
   useBasicAuth: false
   useIstio: false
