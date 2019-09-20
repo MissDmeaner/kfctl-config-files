@@ -51,7 +51,7 @@ spec:
       - name: gpu-pool-image-type
         value: cos
       - name: kfctl_image
-        value: "gcr.io/constant-cubist-173123/kfctl/builder:7eff859"
+        value: "gcr.io/constant-cubist-173123/kfctl/builder@sha256:ba6938d30923ed8e4dcfd8eb5dc5a0cf133243d1606c1e45091d9f1cf518ed2e"
       - name: namespace
         value: kubeflow-ci
       - name: platform
