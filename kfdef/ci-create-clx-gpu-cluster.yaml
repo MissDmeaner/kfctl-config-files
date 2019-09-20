@@ -27,7 +27,7 @@ spec:
       - name: cpu-pool-initialNodeCount
         value: 2
       - name: cpu-pool-machine-type
-        value: n1-standard-16
+        value: c2-standard-16
       - name: cpu-pool-max-nodes
         value: 10
       - name: cpu-pool-min-nodes
@@ -47,7 +47,7 @@ spec:
       - name: gpu-pool-min-nodes
         value: 1
       - name: gpu-pool-min-cpu-platform
-        value: Intel Cascade Lake
+        value: Intel Skylake
       - name: gpu-pool-image-type
         value: cos
       - name: kfctl_image
