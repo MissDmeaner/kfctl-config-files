@@ -1,0 +1,88 @@
+apiVersion: kfdef.apps.kubeflow.org/v1alpha1
+kind: KfDef
+metadata:
+  name: ci-create-cluster
+  namespace: kubeflow-ci
+spec:
+  repos:
+  - name: manifests
+    root: 
+    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
+  - name: kubeflow
+    root: kubeflow-master
+    uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
+  applications:
+  - kustomizeConfig:
+      overlays:
+      - create-cluster-task
+      parameters:
+      - name: app_dir
+        value: kubeflow-ci
+      - name: cluster
+        value: kubeflow-ci
+      - name: cluster-version
+        value: 1.14
+      - name: configPath
+        value: "https://raw.githubusercontent.com/kkasravi/kfctl-config-files/master/kfdef/gcp/ci-cluster.yaml"
+      - name: cpu-pool-initialNodeCount
+        value: 2
+      - name: cpu-pool-machine-type
+        value: n1-standard-16
+      - name: cpu-pool-max-nodes
+        value: 10
+      - name: cpu-pool-min-nodes
+        value: 0
+      - name: cpu-pool-min-cpu-platform
+        value: Intel Cascade Lake
+      - name: cpu-pool-image-type
+        value: ubuntu
+      - name: email
+        value: kf-account@constant-cubist-173123.iam.gserviceaccount.com
+      - name: gpu-pool-initialNodeCount
+        value: 1
+      - name: gpu-pool-machine-type
+        value: n1-standard-16
+      - name: gpu-pool-max-nodes
+        value: 1
+      - name: gpu-pool-min-nodes
+        value: 1
+      - name: gpu-pool-min-cpu-platform
+        value: Intel Cascade Lake
+      - name: gpu-pool-image-type
+        value: cos
+      - name: kfctl_image
+        value: "gcr.io/constant-cubist-173123/kfctl/builder:7eff859"
+      - name: namespace
+        value: kubeflow-ci
+      - name: platform
+        value: all
+      - name: project
+        value: constant-cubist-173123
+      - name: pvc_mount_path
+        value: /kubeflow
+      - name: zone
+        value: us-central1-a
+      repoRef:
+        name: manifests
+        path: ci/ci-pipeline
+    name: ci-pipeline
+  - kustomizeConfig:
+      overlays:
+      - application
+      parameters:
+      - name: namespace
+        value: kubeflow-ci
+      - name: generateName
+        value: ci-create-cluster-pipeline-run-
+      - name: pipeline
+        value: ci-pipeline
+      repoRef:
+        name: manifests
+        path: ci/ci-pipeline-run
+    name: ci-pipeline-run
+  enableApplications: true
+  packageManager: kustomize
+  skipInitProject: true
+  useBasicAuth: false
+  useIstio: false
+  version: master
