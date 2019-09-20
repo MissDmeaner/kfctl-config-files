@@ -49,7 +49,7 @@ spec:
       - name: gpu-pool-min-cpu-platform
         value: Intel Skylake
       - name: gpu-pool-image-type
-        value: ubuntu
+        value: cos
       - name: kfctl_image
         value: "gcr.io/constant-cubist-173123/kfctl/builder@sha256:dcdd79d565f936784021f463bf481930d21a797db140e94568977c4aaf5c018b"
       - name: namespace
