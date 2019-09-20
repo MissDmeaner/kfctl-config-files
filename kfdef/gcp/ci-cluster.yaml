@@ -122,6 +122,11 @@ spec:
         path: profiles
     name: profiles
   - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: gcp/gpu-driver
+    name: gpu-driver
+  - kustomizeConfig:
       overlays:
       - gcp-credentials
       - managed-cert
