@@ -79,6 +79,21 @@ spec:
     name: notebook-controller
   - kustomizeConfig:
       overlays:
+      - istio
+      repoRef:
+        name: manifests
+        path: tensorboard
+    name: tensorboard
+  - kustomizeConfig:
+      overlays:
+      - istio
+      - application
+      repoRef:
+        name: manifests
+        path: tf-training/tf-job-operator
+    name: tf-job-operator
+  - kustomizeConfig:
+      overlays:
       - minioPd
       parameters:
       - name: minioPd
