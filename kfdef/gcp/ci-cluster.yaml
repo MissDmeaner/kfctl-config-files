@@ -41,6 +41,8 @@ spec:
       overlays:
       - application
       parameters:
+      - name: namespace
+        value: tekton-pipelines
       - name: generateName
         value: tektoncd-install-
       - name: registry
