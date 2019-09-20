@@ -1,7 +1,7 @@
 apiVersion: kfdef.apps.kubeflow.org/v1alpha1
 kind: KfDef
 metadata:
-  name: ci-central-dashboard-pipeline-run
+  name: ci-run-model-gpu-pipeline-run
   namespace: kubeflow-ci
 spec:
   repos:
@@ -21,7 +21,7 @@ spec:
       - name: image_name
         value: "gcr.io/constant-cubist-173123/tf-test-gpu@sha256:706ff9468ba09eab305c2768321a9950e6e5c1be9e0ccfd8bc9af9e4ea6becee"
       - name: accelerator_type
-        value: nvidia
+        value: nvidia/com
       - name: accelerator_count
         value: 1
       repoRef:
