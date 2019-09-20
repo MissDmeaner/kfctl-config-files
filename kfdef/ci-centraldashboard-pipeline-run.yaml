@@ -32,7 +32,7 @@ spec:
       - name: path_to_manifests_dir
         value: common/centraldashboard/base
       - name: container_image
-        value: "gcr.io/constant-cubist-173123/test-worker:v20190919-00831ba-e3b0c4"
+        value: "gcr.io/constant-cubist-173123/test-worker:v20190919-73d5f44-e3b0c4"
       - name: pull_request_repo
         value: kubeflow
       - name: pull_request_id
