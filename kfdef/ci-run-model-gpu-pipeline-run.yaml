@@ -35,7 +35,7 @@ spec:
       - name: namespace
         value: kubeflow-ci
       - name: generateName
-        value: ci-centraldashboard-pipeline-run-
+        value: ci-run-model-gpu-pipeline-run-
       - name: pipeline
         value: ci-pipeline
       - name: pvc_mount_path
