@@ -1,16 +1,12 @@
 apiVersion: kfdef.apps.kubeflow.org/v1alpha1
 kind: KfDef
 metadata:
-  name: ci-run-model-gpu-pipeline-run
+  name: ci-run-model-skx-pipeline-run
   namespace: kubeflow-ci
 spec:
   repos:
   - name: manifests
-    root: 
     uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
-  - name: kubeflow
-    root: kubeflow-master
-    uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
   applications:
   - kustomizeConfig:
       overlays:
@@ -19,9 +15,9 @@ spec:
       - name: pipeline
         value: ci-pipeline
       - name: image_name
-        value: "gcr.io/constant-cubist-173123/tf-test-gpu@sha256:706ff9468ba09eab305c2768321a9950e6e5c1be9e0ccfd8bc9af9e4ea6becee"
+        value: "gcr.io/constant-cubist-173123/tf-test-skx:355316a"
       - name: accelerator_name
-        value: nvidia/com
+        value: cpu
       - name: accelerator_count
         value: 1
       repoRef:
@@ -36,13 +32,13 @@ spec:
       - name: namespace
         value: kubeflow-ci
       - name: generateName
-        value: ci-run-model-gpu-pipeline-run-
+        value: ci-run-model-skx-pipeline-run-
       - name: pipeline
         value: ci-pipeline
       - name: pvc_mount_path
         value: /kubeflow
       - name: accelerator_type:
-        value: nvidia-tesla-p100
+        value: Intel Skylake
       repoRef:
         name: manifests
         path: ci/ci-pipeline-run
