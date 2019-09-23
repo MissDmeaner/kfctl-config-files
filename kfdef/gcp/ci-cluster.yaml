@@ -18,6 +18,22 @@ spec:
         path: istio/istio-crds
     name: istio-crds
   - kustomizeConfig:
+      parameters:
+      - name: namespace
+        value: istio-system
+      repoRef:
+        name: manifests
+        path: istio/istio-install
+    name: istio-install
+  - kustomizeConfig:
+      parameters:
+      - name: clusterRbacConfig
+        value: "ON"
+      repoRef:
+        name: manifests
+        path: istio/istio
+    name: istio
+  - kustomizeConfig:
       repoRef:
         name: manifests
         path: application/application-crds
@@ -52,6 +68,20 @@ spec:
         path: tektoncd/tektoncd-install
     name: tektoncd-install
   - kustomizeConfig:
+      overlays:
+      - istio
+      repoRef:
+        name: manifests
+        path: argo
+    name: argo
+  - kustomizeConfig:
+      overlays:
+      - istio
+      repoRef:
+        name: manifests
+        path: common/centraldashboard
+    name: centraldashboard
+  - kustomizeConfig:
       repoRef:
         name: manifests
         path: admission-webhook/webhook
@@ -64,6 +94,14 @@ spec:
         name: manifests
         path: admission-webhook/bootstrap
     name: bootstrap
+  - kustomizeConfig:
+      overlays:
+      - istio
+      - application
+      repoRef:
+        name: manifests
+        path: jupyter/jupyter-web-app
+    name: jupyter-web-app
   - kustomizeConfig:
       overlays:
       - istio
