@@ -27,11 +27,11 @@ spec:
       - name: cpu-pool-initialNodeCount
         value: 2
       - name: cpu-pool-machine-type
-        value: c2-standard-16
+        value: c2-standard-8
       - name: cpu-pool-max-nodes
-        value: 10
+        value: 2
       - name: cpu-pool-min-nodes
-        value: 0
+        value: 1
       - name: cpu-pool-min-cpu-platform
         value: cascadelake
       - name: cpu-pool-image-type
