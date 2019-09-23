@@ -61,7 +61,7 @@ spec:
       - name: pvc_mount_path
         value: /kubeflow
       - name: zone
-        value: us-central1-a
+        value: us-central1-b
       repoRef:
         name: manifests
         path: ci/ci-pipeline
