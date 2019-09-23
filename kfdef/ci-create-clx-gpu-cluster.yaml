@@ -33,7 +33,7 @@ spec:
       - name: cpu-pool-min-nodes
         value: 0
       - name: cpu-pool-min-cpu-platform
-        value: Intel Cascade Lake
+        value: cascadelake
       - name: cpu-pool-image-type
         value: ubuntu
       - name: email
@@ -50,6 +50,8 @@ spec:
         value: Intel Skylake
       - name: gpu-pool-image-type
         value: cos
+      - name: gpu-type
+        value: nvidia-tesla-T4
       - name: kfctl_image
         value: "gcr.io/constant-cubist-173123/kfctl/builder@sha256:ba6938d30923ed8e4dcfd8eb5dc5a0cf133243d1606c1e45091d9f1cf518ed2e"
       - name: namespace
