@@ -41,8 +41,8 @@ spec:
         value: ci-pipeline
       - name: pvc_mount_path
         value: /kubeflow
-      - name: accelerator_type:
-        value: nvidia-tesla-p100
+      - name: accelerator_type
+        value: nvidia-tesla-t4
       repoRef:
         name: manifests
         path: ci/ci-pipeline-run
