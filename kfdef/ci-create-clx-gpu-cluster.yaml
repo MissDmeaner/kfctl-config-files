@@ -41,7 +41,7 @@ spec:
       - name: gpu-pool-initialNodeCount
         value: 1
       - name: gpu-pool-machine-type
-        value: n1-standard-16
+        value: n1-standard-8
       - name: gpu-pool-max-nodes
         value: 1
       - name: gpu-pool-min-nodes
