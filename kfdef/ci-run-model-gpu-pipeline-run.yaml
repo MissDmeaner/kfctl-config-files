@@ -6,11 +6,10 @@ metadata:
 spec:
   repos:
   - name: manifests
-    root: 
     uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
-  - name: kubeflow
-    root: kubeflow-master
-    uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
+#  - name: kubeflow
+#    root: kubeflow-master
+#    uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
   applications:
   - kustomizeConfig:
       overlays:
@@ -21,7 +20,7 @@ spec:
       - name: image_name
         value: "gcr.io/constant-cubist-173123/tf-test-gpu@sha256:706ff9468ba09eab305c2768321a9950e6e5c1be9e0ccfd8bc9af9e4ea6becee"
       - name: accelerator_name
-        value: nvidia/com
+        value: nvidia.com/gpu
       - name: accelerator_count
         value: 1
       repoRef:
