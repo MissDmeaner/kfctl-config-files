@@ -37,7 +37,7 @@ spec:
         value: ci-pipeline
       - name: pvc_mount_path
         value: /kubeflow
-      - name: cpuType:
+      - name: cpuType
         value: cascadelake
       repoRef:
         name: manifests
