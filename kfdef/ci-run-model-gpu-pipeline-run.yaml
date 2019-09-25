@@ -30,7 +30,7 @@ spec:
   - kustomizeConfig:
       overlays:
       - application
-      - node-selector
+      - accelerator-node-selector
       parameters:
       - name: namespace
         value: kubeflow-ci
@@ -40,7 +40,7 @@ spec:
         value: ci-pipeline
       - name: pvc_mount_path
         value: /kubeflow
-      - name: accelerator_type
+      - name: acceleratorType
         value: nvidia-tesla-t4
       repoRef:
         name: manifests

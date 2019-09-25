@@ -27,7 +27,7 @@ spec:
   - kustomizeConfig:
       overlays:
       - application
-      - node-selector
+      - cpu-node-selector
       parameters:
       - name: namespace
         value: kubeflow-ci
@@ -37,8 +37,8 @@ spec:
         value: ci-pipeline
       - name: pvc_mount_path
         value: /kubeflow
-      - name: accelerator_type:
-        value: Intel Cascade Lake
+      - name: cpuType:
+        value: cascadelake
       repoRef:
         name: manifests
         path: ci/ci-pipeline-run
