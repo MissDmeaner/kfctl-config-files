@@ -15,7 +15,7 @@ spec:
       - name: pipeline
         value: ci-pipeline
       - name: image_name
-        value: "gcr.io/constant-cubist-173123/tf-test-gpu@sha256:706ff9468ba09eab305c2768321a9950e6e5c1be9e0ccfd8bc9af9e4ea6becee"
+        value: "gcr.io/constant-cubist-173123/tf-test-skx@sha256:35a202b039b8a0610cc2365d2ac034b798ff525e590f5e5f1fc94dcf2c854f15"
       - name: accelerator_name
         value: cpu
       - name: accelerator_count
@@ -27,7 +27,7 @@ spec:
   - kustomizeConfig:
       overlays:
       - application
-      - node-selector
+      - cpu-node-selector
       parameters:
       - name: namespace
         value: kubeflow-ci
@@ -37,8 +37,8 @@ spec:
         value: ci-pipeline
       - name: pvc_mount_path
         value: /kubeflow
-      - name: accelerator_type
-        value: Intel Skylake
+      - name: cpuType
+        value: skylake
       repoRef:
         name: manifests
         path: ci/ci-pipeline-run
