@@ -7,7 +7,7 @@ spec:
   repos:
   - name: manifests
     root: 
-    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
+    uri: https://github.com/kkasravi/manifests/tree/e2e-pipelineruns
   - name: kubeflow
     root: kubeflow-master
     uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
