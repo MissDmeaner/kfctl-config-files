@@ -53,7 +53,7 @@ spec:
       - name: gpu-type
         value: nvidia-tesla-t4
       - name: kfctl_image
-        value: "gcr.io/constant-cubist-173123/kfctl/builder@sha256:ba6938d30923ed8e4dcfd8eb5dc5a0cf133243d1606c1e45091d9f1cf518ed2e"
+        value: "gcr.io/constant-cubist-173123/kfctl/builder@sha256:d9b3c54554e02d631168d73ba28d5f210682b94de5e38f2f537c871410f48b45"
       - name: namespace
         value: kubeflow-ci
       - name: platform
