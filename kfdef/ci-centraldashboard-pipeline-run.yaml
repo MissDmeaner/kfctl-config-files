@@ -33,10 +33,6 @@ spec:
         value: common/centraldashboard/base
       - name: container_image
         value: "gcr.io/constant-cubist-173123/test-worker:v20190919-73d5f44-e3b0c4"
-      - name: pull_request_repo
-        value: kubeflow
-      - name: pull_request_id
-        value: 4091
       repoRef:
         name: manifests
         path: ci/ci-pipeline
@@ -60,21 +56,15 @@ spec:
       - name: image_url
         value: "gcr.io/constant-cubist-173123/centraldashboard"
       - name: kubeflow_repo_revision
-        value: refs/pull/4091/head
+        value: 26e438650e1908bc79d72904c176d800f3dd03ba
       - name: kubeflow_repo_url
         value: git@github.com:kubeflow/kubeflow.git
       - name: manifests_repo_revision
         value: master
       - name: manifests_repo_url
         value: git@github.com:kkasravi/manifests.git
-      - name: pull_request_repo
-        value: kubeflow
-      - name: pull_request_id
-        value: 4091
       - name: pvc_mount_path
         value: /kubeflow
-      - name: project
-        value: constant-cubist-173123
       repoRef:
         name: manifests
         path: ci/ci-pipeline-run
