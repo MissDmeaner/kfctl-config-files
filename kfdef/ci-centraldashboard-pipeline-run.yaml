@@ -43,7 +43,6 @@ spec:
       - kubeflow-repo-resource
       - manifests-repo-resource
       - image-resource
-      - pull-request-resource
       parameters:
       - name: namespace
         value: kubeflow-ci
@@ -56,7 +55,7 @@ spec:
       - name: image_url
         value: "gcr.io/constant-cubist-173123/centraldashboard"
       - name: kubeflow_repo_revision
-        value: 26e438650e1908bc79d72904c176d800f3dd03ba
+        value: refs/pull/4091/head
       - name: kubeflow_repo_url
         value: git@github.com:kubeflow/kubeflow.git
       - name: manifests_repo_revision
