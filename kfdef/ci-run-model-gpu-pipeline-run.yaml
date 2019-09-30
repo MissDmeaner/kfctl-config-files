@@ -28,14 +28,16 @@ spec:
       - application
       - accelerator-node-selector
       parameters:
-      - name: namespace
-        value: kubeflow-ci
-      - name: generateName
-        value: ci-run-model-gpu-pipeline-run-
-      - name: pvc_mount_path
-        value: /kubeflow
       - name: acceleratorType
         value: nvidia-tesla-t4
+      - name: generateName
+        value: ci-run-model-gpu-pipeline-run-
+      - name: namespace
+        value: kubeflow-ci
+      - name: pipeline
+        value: ci-pipeline
+      - name: pvc_mount_path
+        value: /kubeflow
       repoRef:
         name: manifests
         path: ci/ci-pipeline-run
