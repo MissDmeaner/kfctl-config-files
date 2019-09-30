@@ -61,7 +61,7 @@ spec:
       - name: manifests_repo_revision
         value: master
       - name: manifests_repo_url
-        value: git@github.com:kkasravi/manifests.git
+        value: git@github.com:kubeflow/manifests.git
       - name: pvc_mount_path
         value: /kubeflow
       repoRef:
