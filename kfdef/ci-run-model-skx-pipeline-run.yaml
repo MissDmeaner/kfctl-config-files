@@ -6,8 +6,8 @@ metadata:
 spec:
   repos:
   - name: manifests
-#    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
-    uri: https://github.com/kubeflow/manifests/archive/pull/328/head.tar.gz
+    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
+#    uri: https://github.com/kubeflow/manifests/archive/pull/328/head.tar.gz
   applications:
   - kustomizeConfig:
       overlays:
@@ -17,10 +17,6 @@ spec:
         value: ci-pipeline
       - name: image_name
         value: "gcr.io/constant-cubist-173123/tf-test-skx@sha256:35a202b039b8a0610cc2365d2ac034b798ff525e590f5e5f1fc94dcf2c854f15"
-      - name: accelerator_name
-        value: cpu
-      - name: accelerator_count
-        value: 1
       repoRef:
         name: manifests
         path: ci/ci-pipeline

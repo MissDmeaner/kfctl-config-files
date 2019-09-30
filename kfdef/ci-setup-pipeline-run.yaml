@@ -9,9 +9,6 @@ spec:
     root: 
 #    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
     uri: https://github.com/kubeflow/manifests/archive/pull/328/head.tar.gz
-  - name: kubeflow
-    root: kubeflow-master
-    uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
   applications:
   - kustomizeConfig:
       repoRef:
