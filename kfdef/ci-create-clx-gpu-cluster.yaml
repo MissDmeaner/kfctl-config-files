@@ -7,10 +7,7 @@ spec:
   repos:
   - name: manifests
     root: 
-    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
-  - name: kubeflow
-    root: kubeflow-master
-    uri: https://github.com/kubeflow/kubeflow/archive/master.tar.gz
+    uri: https://github.com/kubeflow/manifests/archive/pull/328/head.tar.gz
   applications:
   - kustomizeConfig:
       overlays:
@@ -23,7 +20,7 @@ spec:
       - name: cluster-version
         value: 1.14
       - name: configPath
-        value: "https://raw.githubusercontent.com/kkasravi/kfctl-config-files/master/kfdef/gcp/ci-cluster.yaml"
+        value: "https://raw.githubusercontent.com/kkasravi/kfctl-config-files/master/kfdef/gcp/ci-cluster-all.yaml"
       - name: cpu-pool-initialNodeCount
         value: 1
       - name: cpu-pool-machine-type
