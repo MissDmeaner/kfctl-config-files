@@ -7,8 +7,7 @@ spec:
   repos:
   - name: manifests
     root: 
-#    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
-    uri: https://github.com/kubeflow/manifests/archive/pull/409/head.tar.gz
+    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
   applications:
   - kustomizeConfig:
       repoRef:
@@ -18,6 +17,9 @@ spec:
   - kustomizeConfig:
       overlays:
       - application
+      parameters:
+      - name: generateName
+        value: kubeflow-
       repoRef:
         name: manifests
         path: application/application
@@ -26,10 +28,10 @@ spec:
       overlays:
       - application
       parameters:
-      - name: namespace
-        value: tekton-pipelines
       - name: generateName
         value: tektoncd-install-
+      - name: namespace
+        value: tekton-pipelines
       - name: registry
         value: gcr.io/tekton-releases
       repoRef:

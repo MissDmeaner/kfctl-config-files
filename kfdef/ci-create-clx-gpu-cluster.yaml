@@ -6,7 +6,8 @@ metadata:
 spec:
   repos:
   - name: manifests
-    uri: https://github.com/kubeflow/manifests/archive/pull/409/head.tar.gz
+    #uri: https://github.com/kubeflow/manifests/archive/pull/409/head.tar.gz
+    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
   applications:
   - kustomizeConfig:
       overlays:
@@ -68,10 +69,10 @@ spec:
       overlays:
       - application
       parameters:
-      - name: namespace
-        value: kubeflow-ci
       - name: generateName
         value: ci-create-cluster-pipeline-run-
+      - name: namespace
+        value: kubeflow-ci
       - name: pipeline
         value: ci-pipeline
       repoRef:

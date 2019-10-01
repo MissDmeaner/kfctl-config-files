@@ -11,8 +11,11 @@ spec:
   applications:
   - kustomizeConfig:
       overlays:
+      - application
       - run-model-task
       parameters:
+      - name: generateName
+        value: ci-run-model-clx-pipeline-
       - name: pipeline
         value: ci-pipeline
       - name: image_name
@@ -26,10 +29,10 @@ spec:
       - application
       - cpu-node-selector
       parameters:
-      - name: namespace
-        value: kubeflow-ci
       - name: generateName
         value: ci-run-model-clx-pipeline-run-
+      - name: namespace
+        value: kubeflow-ci
       - name: pipeline
         value: ci-pipeline
       - name: pvc_mount_path
