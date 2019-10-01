@@ -7,7 +7,7 @@ spec:
   repos:
   - name: manifests
     uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
-#    uri: https://github.com/kubeflow/manifests/archive/pull/328/head.tar.gz
+#    uri: https://github.com/kubeflow/manifests/archive/pull/409/head.tar.gz
   applications:
   - kustomizeConfig:
       overlays:

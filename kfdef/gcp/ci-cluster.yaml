@@ -6,7 +6,7 @@ metadata:
 spec:
   repos:
   - name: manifests
-    uri: https://github.com/kubeflow/manifests/archive/pull/328/head.tar.gz
+    uri: https://github.com/kubeflow/manifests/archive/pull/409/head.tar.gz
   appdir: /tmp/myapp2
   applications:
   - kustomizeConfig:
