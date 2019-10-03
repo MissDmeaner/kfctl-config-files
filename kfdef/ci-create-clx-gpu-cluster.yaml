@@ -20,7 +20,7 @@ spec:
       - name: cluster-version
         value: 1.14
       - name: configPath
-        value: "https://raw.githubusercontent.com/kkasravi/kfctl-config-files/master/kfdef/gcp/ci-cluster-minimal.yaml"
+        value: "https://raw.githubusercontent.com/kkasravi/kfctl-config-files/master/kfdef/gcp/ci-cluster.yaml"
       - name: cpu-pool-initialNodeCount
         value: 1
       - name: cpu-pool-machine-type
