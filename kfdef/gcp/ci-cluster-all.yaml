@@ -14,6 +14,11 @@ spec:
   appdir: /tmp/myapp2
   applications:
   - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: application/application-crds
+    name: application-crds
+  - kustomizeConfig:
       overlays:
       - application
       parameters:
@@ -39,11 +44,6 @@ spec:
         name: manifests
         path: istio/istio
     name: istio
-  - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: application/application-crds
-    name: application-crds
   - kustomizeConfig:
       overlays:
       - application
