@@ -29,16 +29,6 @@ spec:
       - application
       parameters:
       - name: generateName
-        value: metacontroller-
-      repoRef:
-        name: manifests
-        path: metacontroller
-    name: metacontroller
-  - kustomizeConfig:
-      overlays:
-      - application
-      parameters:
-      - name: generateName
         value: tektoncd-install-
       - name: namespace
         value: tekton-pipelines
@@ -48,6 +38,20 @@ spec:
         name: manifests
         path: tektoncd/tektoncd-install
     name: tektoncd-install
+  - kustomizeConfig:
+      overlays:
+      - application
+      parameters:
+      - name: generateName
+        value: tektoncd-dashboard-
+      - name: namespace
+        value: tekton-pipelines
+      - name: registry
+        value: gcr.io/tekton-releases
+      repoRef:
+        name: manifests
+        path: tektoncd/tektoncd-dashboard
+    name: tektoncd-dashboard
   email: kfctl-ci@constant-cubist-173123.iam.gserviceaccount.com
   enableApplications: true
   packageManager: kustomize
