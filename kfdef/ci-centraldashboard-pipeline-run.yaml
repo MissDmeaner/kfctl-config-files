@@ -51,7 +51,7 @@ spec:
       - name: image_url
         value: "gcr.io/constant-cubist-173123/centraldashboard"
       - name: kubeflow_repo_revision
-        value: refs/pull/4091/head
+        value: master
       - name: kubeflow_repo_url
         value: git@github.com:kubeflow/kubeflow.git
       - name: manifests_repo_revision

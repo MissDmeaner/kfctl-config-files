@@ -6,7 +6,8 @@ metadata:
 spec:
   repos:
   - name: manifests
-    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
+    uri: https://github.com/kubeflow/manifests/archive/pull/409/head.tar.gz
+  appdir: /tmp/myapp2
   applications:
   - kustomizeConfig:
       repoRef:
@@ -28,6 +29,16 @@ spec:
       - application
       parameters:
       - name: generateName
+        value: metacontroller-
+      repoRef:
+        name: manifests
+        path: metacontroller
+    name: metacontroller
+  - kustomizeConfig:
+      overlays:
+      - application
+      parameters:
+      - name: generateName
         value: tektoncd-install-
       - name: namespace
         value: tekton-pipelines
@@ -37,20 +48,18 @@ spec:
         name: manifests
         path: tektoncd/tektoncd-install
     name: tektoncd-install
-  - kustomizeConfig:
-      overlays:
-      - application
-      parameters:
-      - name: generateName
-        value: tektoncd-dashboard-
-      - name: namespace
-        value: tekton-pipelines
-      repoRef:
-        name: manifests
-        path: tektoncd/tektoncd-dashboard
-    name: tektoncd-dashboard
+  email: kfctl-ci@constant-cubist-173123.iam.gserviceaccount.com
   enableApplications: true
   packageManager: kustomize
+  platform: gcp
+  plugins:
+  - name: gcp
+    spec:
+      createPipelinePersistentStorage: true
+      deploymentManagerConfig:
+        repoRef:
+          name: manifests
+          path: gcp/deployment_manager_configs
   skipInitProject: true
   useBasicAuth: false
   useIstio: false

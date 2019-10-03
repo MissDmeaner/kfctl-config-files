@@ -10,9 +10,11 @@ spec:
   appdir: /tmp/myapp2
   applications:
   - kustomizeConfig:
+      overlays:
+      - application
       parameters:
-      - name: namespace
-        value: istio-system
+      - name: generateName
+        value: istio-crds-
       repoRef:
         name: manifests
         path: istio/istio-crds

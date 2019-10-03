@@ -1,25 +1,23 @@
 apiVersion: kfdef.apps.kubeflow.org/v1alpha1
 kind: KfDef
 metadata:
-  name: ci-run-model-skx-pipeline-run
+  name: ci-application-status-pipeline-run
   namespace: kubeflow-ci
 spec:
   repos:
   - name: manifests
     uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
-#    uri: https://github.com/kubeflow/manifests/archive/pull/409/head.tar.gz
   applications:
   - kustomizeConfig:
       overlays:
-      - application
-      - run-model-task
+      - application-status-task
       parameters:
-      - name: generateName
-        value: ci-run-model-clx-pipeline-
+      - name: applications
+        value: ["pipelines-viewer"]
+      - name: container_image
+        value: "gcr.io/constant-cubist-173123/test-worker:v20190919-73d5f44-e3b0c4"
       - name: pipeline
         value: ci-pipeline
-      - name: image_name
-        value: "gcr.io/constant-cubist-173123/tf-test-skx@sha256:35a202b039b8a0610cc2365d2ac034b798ff525e590f5e5f1fc94dcf2c854f15"
       repoRef:
         name: manifests
         path: ci/ci-pipeline
@@ -27,18 +25,15 @@ spec:
   - kustomizeConfig:
       overlays:
       - application
-      - cpu-node-selector
       parameters:
       - name: generateName
-        value: ci-run-model-skx-pipeline-run-
+        value: ci-centraldashboard-pipeline-run-
       - name: namespace
         value: kubeflow-ci
       - name: pipeline
         value: ci-pipeline
       - name: pvc_mount_path
         value: /kubeflow
-      - name: cpuType
-        value: skylake
       repoRef:
         name: manifests
         path: ci/ci-pipeline-run
