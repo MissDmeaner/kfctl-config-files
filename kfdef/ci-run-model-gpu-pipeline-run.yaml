@@ -17,7 +17,7 @@ spec:
       - name: pipeline
         value: ci-pipeline
       - name: image_name
-        value: "gcr.io/constant-cubist-173123/tf-test-gpu@sha256:d8f3a79eb104928c9ec1e73a284d1db739591563815b41860c1d769e919ffb4c"
+        value: "gcr.io/constant-cubist-173123/tf-test-gpu@sha256:8ebc44cda1753ce2c745ce30619bf30ba6bb5c76b14edca9d9bf0d43abb72fc7"
       - name: accelerator_count
         value: 1
       repoRef:

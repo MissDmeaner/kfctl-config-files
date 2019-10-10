@@ -38,7 +38,7 @@ spec:
       - name: pvc_mount_path
         value: /kubeflow
       - name: cpuType
-        value: skylake
+        value: skx-8180
       repoRef:
         name: manifests
         path: ci/ci-pipeline-run
