@@ -1,12 +1,9 @@
 apiVersion: kfdef.apps.kubeflow.org/v1alpha1
 kind: KfDef
 metadata:
-  name: ci-run-model-gpu-pipeline-run
-  namespace: kubeflow-ci
+  name: run-model-clx-gpu
+  namespace: kubeflow
 spec:
-  repos:
-  - name: manifests
-    uri: /Users/kdkasrav/go/src/github.com/kubeflow/manifests
   applications:
   - kustomizeConfig:
       overlays:
@@ -14,37 +11,33 @@ spec:
       - run-model-task-nvidia
       parameters:
       - name: pipeline
-        value: ci-pipeline
+        value: tkp-pipeline
       - name: image_name
         value: "gcr.io/constant-cubist-173123/tf-test-gpu@sha256:16d5dfba7a4a73d530032aa3e3f8be6b8d6dfbd3cea3beeec333549009376cac"
       - name: accelerator_count
         value: 1
       repoRef:
         name: manifests
-        path: ci/ci-pipeline
-    name: ci-pipeline
+        path: tkp/tkp-pipeline
+    name: tkp-pipeline
   - kustomizeConfig:
       overlays:
       - application
-      - accelerator-node-selector
+      - cpu-node-selector
       parameters:
-      - name: acceleratorType
-        value: nvidia-tesla-t4
+      - name: cpuType
+        value: cascadelake
       - name: generateName
-        value: ci-run-model-gpu-pipeline-run-
-      - name: namespace
-        value: kubeflow-ci
+        value: run-model-clx-gpu-
       - name: pipeline
-        value: ci-pipeline
+        value: tkp-pipeline
       - name: pvc_mount_path
         value: /kubeflow
       repoRef:
         name: manifests
-        path: ci/ci-pipeline-run
-    name: ci-pipeline-run
-  enableApplications: true
-  packageManager: kustomize
-  skipInitProject: true
-  useBasicAuth: false
-  useIstio: false
+        path: tkp/tkp-pipeline-run
+    name: tkp-pipeline-run
+  repos:
+  - name: manifests
+    uri: /Users/kdkasrav/Github/kfctl-config-files
   version: master

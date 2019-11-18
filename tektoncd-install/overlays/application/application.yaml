@@ -1,25 +1,29 @@
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: tkp-pipeline
+  name: tektoncd-install
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: tkp-pipeline
-      app.kubernetes.io/instance: tkp-pipeline-v0.7.1
+      app.kubernetes.io/name: tektoncd-install
+      app.kubernetes.io/instance: tektoncd-install-v0.7.1
       app.kubernetes.io/managed-by: kfctl
-      app.kubernetes.io/component: tkp-pipeline
+      app.kubernetes.io/component: tektoncd-install
       app.kubernetes.io/part-of: kubeflow
       app.kubernetes.io/version: v0.7.1
   componentKinds:
-  - group: tekton.dev
-    kind: Pipeline
-  - group: tekton.dev
-    kind: Task
+  - group: core
+    kind: ConfigMap
+  - group: apps
+    kind: Deployment
+  - group: core
+    kind: ServiceAccount
+  - group: core
+    kind: Service
   descriptor: 
-    type: tkp-pipeline
+    type: tektoncd-install
     version: v1beta1
-    description: a pipeline run that composes resources and tasks
+    description: installs tektoncd pipeline
     maintainers:
     - name: Kam Kasravi
       email: kam.d.kasravi@intel.com

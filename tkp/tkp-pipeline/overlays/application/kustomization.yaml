@@ -4,26 +4,10 @@ bases:
 - ../../base
 resources:
 - application.yaml
-configurations:
-- params.yaml
-configMapGenerator:
-- name: tkp-pipeline-parameters
-  behavior: merge
-  env: params.env
-generatorOptions:
- disableNameSuffixHash: true
-vars:
-- name: generateName
-  objref:
-    kind: ConfigMap
-    name: tkp-pipeline-parameters
-    apiVersion: v1
-  fieldref:
-    fieldpath: data.generateName
 commonLabels:
   app.kubernetes.io/name: tkp-pipeline
-  app.kubernetes.io/instance: $(generateName)
+  app.kubernetes.io/instance: tkp-pipeline-v0.7.1
   app.kubernetes.io/managed-by: kfctl
-  app.kubernetes.io/component: kubeflow
+  app.kubernetes.io/component: tkp-pipeline
   app.kubernetes.io/part-of: kubeflow
-  app.kubernetes.io/version: v0.6
+  app.kubernetes.io/version: v0.7.1
