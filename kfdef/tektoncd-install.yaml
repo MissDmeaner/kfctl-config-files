@@ -19,5 +19,5 @@ spec:
     name: tektoncd-install
   repos:
   - name: manifests
-    uri: /Users/kdkasrav/Github/kfctl-config-files
+    uri: https://github.com/kkasravi/kfctl-config-files
   version: master

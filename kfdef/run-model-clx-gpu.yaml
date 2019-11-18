@@ -1,4 +1,4 @@
-apiVersion: kfdef.apps.kubeflow.org/v1alpha1
+apiVersion: kfdef.apps.kubeflow.org/v1beta1
 kind: KfDef
 metadata:
   name: run-model-clx-gpu
@@ -13,7 +13,7 @@ spec:
       - name: pipeline
         value: tkp-pipeline
       - name: image_name
-        value: "gcr.io/constant-cubist-173123/tf-test-gpu@sha256:16d5dfba7a4a73d530032aa3e3f8be6b8d6dfbd3cea3beeec333549009376cac"
+        value: "amr-registry-pre.caas.intel.com/kube-nnp/nprof:v1.8.0-154-gd92ffb4"
       - name: accelerator_count
         value: 1
       repoRef:
