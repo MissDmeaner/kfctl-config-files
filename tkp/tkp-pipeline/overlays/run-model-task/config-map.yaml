@@ -5,9 +5,9 @@ metadata:
 data:
   run-model.sh: |-
     #!/usr/bin/env bash
-    python model.py
+    python simple-model.py
     if (( $? == 0 )); then
-      tensorboard --logdir train
+      tensorboard --logdir /kubeflow/logs
     else
       echo 'run model failed'
     fi

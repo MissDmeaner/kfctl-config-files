@@ -5,7 +5,6 @@ bases:
 resources:
 - config-map.yaml
 - task.yaml
-namespace: kubeflow
 patchesJson6902:
 - target:
     group: tekton.dev

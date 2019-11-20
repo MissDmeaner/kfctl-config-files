@@ -1,8 +1,8 @@
 apiVersion: kfdef.apps.kubeflow.org/v1beta1
 kind: KfDef
 metadata:
-  name: run-model-clx-gpu
-  namespace: kubeflow
+  name: run-model-gpu
+  namespace: kam-demo
 spec:
   applications:
   - kustomizeConfig:
@@ -13,7 +13,7 @@ spec:
       - name: pipeline
         value: tkp-pipeline
       - name: image_name
-        value: "kkasravi/tf-test-gpu:3b8d4aa"
+        value: "kkasravi/tf-test-gpu:af59ec9"
       - name: accelerator_count
         value: 1
       repoRef:
@@ -23,12 +23,9 @@ spec:
   - kustomizeConfig:
       overlays:
       - application
-      - cpu-node-selector
       parameters:
-      - name: cpuType
-        value: cascadelake
       - name: generateName
-        value: run-model-clx-gpu-
+        value: run-model-gpu-
       - name: pipeline
         value: tkp-pipeline
       - name: pvc_mount_path
