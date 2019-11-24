@@ -1,7 +1,7 @@
 apiVersion: kfdef.apps.kubeflow.org/v1beta1
 kind: KfDef
 metadata:
-  name: run-model-gpu
+  name: run-model-nnp
   namespace: run-model
 spec:
   applications:
@@ -9,12 +9,12 @@ spec:
       overlays:
       - application
       - run-model-task
-      - run-model-task-nvidia
+      - run-model-task-intel-nnp
       parameters:
       - name: generateName
-        value: run-model-gpu-
+        value: run-model-nnp-
       - name: image_name
-        value: "kkasravi/tf-test-gpu:af59ec9"
+        value: amr-registry-pre.caas.intel.com/kube-nnp/tfprof:v1.8.0-140-g6e6a5af
       - name: accelerator_count
         value: 1
       - name: pvc_mount_path

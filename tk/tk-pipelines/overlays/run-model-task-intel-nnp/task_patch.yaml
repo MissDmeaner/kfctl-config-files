@@ -1,0 +1,5 @@
+- op: add
+  path: /spec/steps/0/resources
+  value:
+    limits:
+      intel.com/nnp: $(accelerator_count)

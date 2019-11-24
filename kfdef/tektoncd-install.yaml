@@ -2,7 +2,7 @@ apiVersion: kfdef.apps.kubeflow.org/v1beta1
 kind: KfDef
 metadata:
   name: tektoncd-install
-  namespace: kubeflow
+  namespace: tekton-pipelines
 spec:
   applications:
   - kustomizeConfig:
@@ -19,5 +19,5 @@ spec:
     name: tektoncd-install
   repos:
   - name: manifests
-    uri: https://github.com/kkasravi/kfctl-config-files
+    uri: /Users/kdkasrav/Github/kfctl-config-files
   version: master

@@ -1,0 +1,19 @@
+- op: add
+  path: /spec/params/-
+  value:
+    name: image_name
+    value: $(image_name)
+- op: add
+  path: /spec/pipelineSpec/params/-
+  value:
+    name: image_name
+    type: string
+- op: add
+  path: /spec/pipelineSpec/tasks/-
+  value:
+    name: run-model
+    taskRef:
+      name: run-model
+    params:
+    - name: imageName
+      value: $(params.image_name)

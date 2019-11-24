@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: run-model
+data:
+  run-model.sh: |-
+    #!/usr/bin/env bash
+    export HTTPS_PROXY=http://proxy-us.intel.com:912
+    export HTTP_PROXY=http://proxy-us.intel.com:911
+    python simple-model.py
+    if (( $? == 0 )); then
+      tensorboard --bind_all --logdir /kubeflow/logs
+    else
+      echo 'run model failed'
+    fi

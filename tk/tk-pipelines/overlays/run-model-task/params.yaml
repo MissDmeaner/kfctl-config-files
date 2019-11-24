@@ -1,0 +1,11 @@
+varReference:
+- path: spec/params/value
+  kind: PipelineRun
+- path: spec/outputs/resources/name
+  kind: Task
+- path: spec/steps/args
+  kind: Task
+- path: spec/outputs/resources/outputImageDir
+  kind: Task
+- path: spec/steps/image
+  kind: Task
