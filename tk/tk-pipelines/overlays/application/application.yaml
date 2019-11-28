@@ -18,12 +18,18 @@ spec:
       kind: Pipeline
     - group: tekton.dev
       kind: PipelineResource
-    - group: TaskRun
+    - group: tekton.dev
       kind: PipelineResource
+    - group: tekton.dev
+      kind: Task
     - group: core
       kind: Pod
     - group: core
       kind: ServiceAccount
+    - group: core
+      kind: ConfigMap
+    - group: core
+      kind: PersistentVolumeClaim
   descriptor: 
     type: tk-pipelines
     version: v1beta1

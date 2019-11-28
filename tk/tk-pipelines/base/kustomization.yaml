@@ -3,8 +3,9 @@ kind: Kustomization
 resources:
 - persistent-volume-claim.yaml
 - service-account.yaml
-#- secrets.yaml
+- secrets.yaml
 - cluster-role-binding.yaml
+- task.yaml
 - pipeline-run.yaml
 namespace: $(namespace)
 configMapGenerator:

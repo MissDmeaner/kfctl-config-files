@@ -7,3 +7,7 @@ varReference:
   kind: PersistentVolumeClaim
 - path: spec/pipelineRef/name
   kind: PipelineRun
+- path: spec/pipelineSpec/tasks/taskRef/name
+  kind: PipelineRun
+- path: metadata/name
+  kind: Task

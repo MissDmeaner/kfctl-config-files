@@ -5,9 +5,9 @@ bases:
 resources:
 - application.yaml
 commonLabels:
-  app.kubernetes.io/name: tk-pipelines
-  app.kubernetes.io/instance: tk-pipelines-v0.8.0
+  app.kubernetes.io/name: nnp-device-plugin
+  app.kubernetes.io/instance: nnp-device-plugin-v0.1.0
   app.kubernetes.io/managed-by: kfctl
-  app.kubernetes.io/component: tk-pipelines
+  app.kubernetes.io/component: nnp-device-plugin
   app.kubernetes.io/part-of: kubeflow
-  app.kubernetes.io/version: v0.8.0
+  app.kubernetes.io/version: v0.1.0

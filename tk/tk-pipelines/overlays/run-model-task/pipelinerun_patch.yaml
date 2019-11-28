@@ -13,7 +13,7 @@
   value:
     name: run-model
     taskRef:
-      name: run-model
+      name: $(generateName)
     params:
     - name: imageName
       value: $(params.image_name)

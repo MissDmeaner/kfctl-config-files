@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- cluster-role.yaml
+- cluster-role-binding.yaml
+- daemon-set.yaml
+- service-account.yaml
+- service-monitor.yaml
+- service.yaml
+commonLabels:
+  app: nnp-device-plugin
+images:
+- name: amr-registry.caas.intel.com/kube-nnp/kube-nnpt-metrics
+  newTag: latest
+- name: amr-registry.caas.intel.com/kube-nnp/kube-nnpt-plugin
+  newTag: latest
+

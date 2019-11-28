@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: kube-nnp-device-plugin-metrics-svc
+  name: kube-nnp-device-plugin-metrics-svc
+spec:
+  ports:
+  - name: web
+    port: 9550
+  selector:
+    name: kube-nnp-device-plugin-metrics

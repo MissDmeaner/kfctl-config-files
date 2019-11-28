@@ -9,7 +9,7 @@ spec:
       overlays:
       - application
       - run-model-task
-      - run-model-task-nvidia
+      - run-model-task-nvidia-gpu
       parameters:
       - name: generateName
         value: run-model-gpu-

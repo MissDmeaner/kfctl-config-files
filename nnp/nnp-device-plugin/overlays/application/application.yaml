@@ -1,0 +1,39 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: nnp-device-plugin
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: nnp-device-plugin
+      app.kubernetes.io/instance: nnp-device-plugin-v0.1.0
+      app.kubernetes.io/managed-by: kfctl
+      app.kubernetes.io/component: nnp-device-plugin
+      app.kubernetes.io/part-of: kubeflow
+      app.kubernetes.io/version: v0.1.0
+  componentKinds:
+  - group: core
+    kind: ConfigMap
+  - group: apps
+    kind: Deployment
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+  - group: rbac.authorization.k8s.io
+    kind: Role
+  - group: core
+    kind: ServiceAccount
+  - group: core
+    kind: Service
+  - group: networking.istio.io
+    kind: VirtualService
+  descriptor:
+    type: nnp-device-plugin
+    version: v1beta1
+    description: Provides a UI which allows the user to create/conect/delete jupyter notebooks.
+    maintainers: []
+    owners: []
+    keywords:
+     - nnp-device-plugin
+    links: []
+  addOwnerRef: true
+

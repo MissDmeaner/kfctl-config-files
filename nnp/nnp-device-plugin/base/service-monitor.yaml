@@ -1,0 +1,16 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    name: kube-nnp-device-plugin-metrics
+  name: kube-nnp-device-plugin-metrics-service-monitor
+spec:
+  endpoints:
+  - path: /metrics
+    port: web
+  namespaceSelector:
+    matchNames:
+    - kube-system
+  selector:
+    matchLabels:
+      name: kube-nnp-device-plugin-metrics-svc

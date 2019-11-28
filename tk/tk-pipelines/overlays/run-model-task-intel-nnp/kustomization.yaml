@@ -7,7 +7,7 @@ patchesJson6902:
     group: tekton.dev
     version: v1alpha1
     kind: Task
-    name: run-model
+    name: $(generateName)
   path: task_patch.yaml
 configMapGenerator:
 - name: tk-pipelines-parameters

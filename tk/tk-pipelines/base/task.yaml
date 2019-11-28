@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: $(generateName)
+spec:
+  inputs:
+    params: []
+    resources: []
+  outputs:
+    results: []
+    resources: []
+  steps: []
+  volumes: []

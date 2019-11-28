@@ -4,6 +4,7 @@ bases:
 - ../../base
 resources:
 - config-map.yaml
+patchesStrategicMerge:
 - task.yaml
 patchesJson6902:
 - target:

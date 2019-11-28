@@ -1,0 +1,140 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: device-plugin
+spec:
+  selector:
+    matchLabels:
+      name: device-plugin
+  template:
+    metadata:
+      labels:
+        name: device-plugin
+    spec:
+      containers:
+      - command:
+        - kube-nnpt-plugin.sh
+        env:
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        image: amr-registry.caas.intel.com/kube-nnp/kube-nnpt-plugin:latest
+        imagePullPolicy: Always
+        name: nnp-device-plugin
+        ports:
+        - containerPort: 22
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /dev/ipmi0
+          name: ipmi
+        - mountPath: /dev/intel_nnp
+          name: nnp
+        - mountPath: /var/lib/kubelet/device-plugins
+          name: socket-dir
+        - mountPath: /lib/modules
+          name: modules
+        - mountPath: /etc/nnp_network.json
+          name: nnp-network
+        - mountPath: /root/keys
+          name: pods-com
+          readOnly: true
+      imagePullSecrets:
+      - name: regcred
+      nodeSelector:
+        intel.com/nnp: "true"
+      serviceAccountName: device-plugin
+      tolerations:
+      - effect: NoSchedule
+        key: node-role.kubernetes.io/master
+      volumes:
+      - hostPath:
+          path: /var/lib/kubelet/device-plugins
+        name: socket-dir
+      - hostPath:
+          path: /dev/ipmi0
+        name: ipmi
+      - hostPath:
+          path: /dev/intel_nnp
+        name: nnp
+      - hostPath:
+          path: /lib/modules
+        name: modules
+      - name: pods-com
+        secret:
+          items:
+          - key: authorized_keys
+            mode: 256
+            path: authorized_keys
+          secretName: pods-com
+      - hostPath:
+          path: /etc/nnp_network.json
+        name: nnp-network
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: device-plugin-metrics
+spec:
+  selector:
+    matchLabels:
+      name: device-plugin-metrics
+  template:
+    metadata:
+      labels:
+        name: device-plugin-metrics
+    spec:
+      containers:
+      - command:
+        - nnpmon
+        - serve
+        - --http-port=9550
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        image: amr-registry.caas.intel.com/kube-nnp/kube-nnpt-metrics:latest
+        imagePullPolicy: Always
+        name: nnp-metrics
+        ports:
+        - containerPort: 9550
+          hostPort: 1180
+          name: http
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - mountPath: /dev/ipmi0
+          name: ipmi
+        - mountPath: /dev/intel_nnp
+          name: nnp
+        - mountPath: /var/lib/kubelet/device-plugins
+          name: socket-dir
+        - mountPath: /lib/modules
+          name: modules
+        - mountPath: /etc/nnp_network.json
+          name: nnp-network
+      imagePullSecrets:
+      - name: regcred
+      nodeSelector:
+        intel.com/nnp: "true"
+      serviceAccountName: device-plugin
+      volumes:
+      - hostPath:
+          path: /var/lib/kubelet/device-plugins
+        name: socket-dir
+      - hostPath:
+          path: /dev/ipmi0
+        name: ipmi
+      - hostPath:
+          path: /dev/intel_nnp
+        name: nnp
+      - hostPath:
+          path: /lib/modules
+        name: modules
+      - hostPath:
+          path: /etc/nnp_network.json
+        name: nnp-network
