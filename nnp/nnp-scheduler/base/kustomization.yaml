@@ -1,0 +1,33 @@
+# Labels to add to all resources and selectors.
+commonLabels:
+  app: scheduler
+
+# Each entry in this list results in the creation of
+# one ConfigMap resource (it's a generator of n maps).
+configMapGenerator:
+- files:
+  - kube-nnpt-scheduler-config-config.yaml
+  name: kube-nnpt-scheduler-config
+- files:
+  - kube-nnpt-scheduler-policy-policy.cfg
+  name: kube-nnpt-scheduler-policy
+
+# Images modify the tags for images without
+# creating patches.
+images:
+- name: amr-registry.caas.intel.com/kube-nnp/kube-nnpt-scheduler
+  newTag: latest
+
+# Value of this field is prepended to the
+# names of all resources
+namePrefix: scheduler
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- service-account.yaml
+- cluster-role.yaml
+- cluster-role-binding.yaml
+- policy.yaml
+- kube-scheduler-configuration.yaml
+- deployment.yaml

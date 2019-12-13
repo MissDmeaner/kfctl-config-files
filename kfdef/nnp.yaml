@@ -1,0 +1,32 @@
+apiVersion: kfdef.apps.kubeflow.org/v1beta1
+kind: KfDef
+metadata:
+  name: nnp
+  namespace: nnp-system
+spec:
+  applications:
+  - kustomizeConfig:
+      overlays:
+      - application
+      repoRef:
+        name: manifests
+        path: nnp/nnp-device-plugin
+    name: nnp-device-plugin
+  - kustomizeConfig:
+      overlays:
+      - application
+      repoRef:
+        name: manifests
+        path: nnp/nnp-scheduler
+    name: nnp-scheduler
+  - kustomizeConfig:
+      overlays:
+      - application
+      repoRef:
+        name: manifests
+        path: nnp/nnp-admission-webhook
+    name: nnp-admission-webhook
+  repos:
+  - name: manifests
+    uri: /Users/kdkasrav/Github/kfctl-config-files
+  version: master

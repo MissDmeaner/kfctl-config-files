@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scheduler
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      name: scheduler
+  template:
+    metadata:
+      labels:
+        name: scheduler
+    spec:
+      containers:
+      - args:
+        - --config=/kube-nnpt-scheduler-config/config.yaml
+        - -v=6
+        command:
+        - /kube-nnpt-scheduler
+        image: amr-registry.caas.intel.com/kube-nnp/kube-nnpt-scheduler:latest
+        imagePullPolicy: Always
+        name: scheduler
+        volumeMounts:
+        - mountPath: /kube-nnpt-scheduler-config
+          name: kube-nnpt-scheduler-config
+        - mountPath: /root/.ssh
+          name: pods-com
+      imagePullSecrets:
+      - name: regcred
+      serviceAccountName: scheduler
+      volumes:
+      - configMap:
+          name: kube-nnpt-scheduler-config
+        name: kube-nnpt-scheduler-config
+      - name: pods-com
+        secret:
+          items:
+          - key: id_rsa
+            mode: 256
+            path: id_rsa
+          - key: authorized_keys
+            mode: 256
+            path: authorized_keys
+          secretName: pods-com

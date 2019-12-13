@@ -1,0 +1,19 @@
+# Labels to add to all resources and selectors.
+commonLabels:
+  app: admission-webhook
+
+# Images modify the tags for images without
+# creating patches.
+images:
+- name: amr-registry.caas.intel.com/kube-nnp/kube-nnpt-admission-webhook
+  newTag: latest
+
+# Value of this field is prepended to the
+# names of all resources
+namePrefix: admission-webhook
+
+# List of resource files that kustomize reads, modifies
+# and emits as a YAML string
+resources:
+- admission-webhook-deploy.yaml
+- admission-webhook-svc.yaml

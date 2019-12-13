@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admission-webhook
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: admission-webhook
+  template:
+    metadata:
+      labels:
+        app: admission-webhook
+    spec:
+      containers:
+      - args:
+        - webhook
+        - --tlsCertFile=/etc/webhook/certs/cert.pem
+        - --tlsKeyFile=/etc/webhook/certs/key.pem
+        - --alsologtostderr
+        - --maxDevices=8
+        - -v=6
+        command:
+        - /kube-nnpt-admission-webhook
+        image: amr-registry.caas.intel.com/kube-nnp/kube-nnpt-admission-webhook:latest
+        name: admission-webhook
+        volumeMounts:
+        - mountPath: /etc/webhook/certs
+          name: webhook-certs
+          readOnly: true
+      imagePullSecrets:
+      - name: regcred
+      volumes:
+      - name: webhook-certs
+        secret:
+          secretName: admission-webhook-certs

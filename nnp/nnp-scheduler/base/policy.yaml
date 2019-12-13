@@ -1,0 +1,8 @@
+kind: Policy
+apiVersion: v1
+extenders:
+- urlPrefix: "http://localhost:5432/kube-nnpt-scheduler-extender"
+  filterVerb: "predicates/nnpt-subnet-allocator-filter"
+  weight: 1
+  enableHttps: false
+  nodeCacheCapable: false
